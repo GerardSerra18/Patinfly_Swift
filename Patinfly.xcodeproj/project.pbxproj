@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D52203C928DA313600482BC5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52203C828DA313600482BC5 /* LoginView.swift */; };
 		D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62E828D0F88200F8368D /* PatinflyApp.swift */; };
 		D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62EA28D0F88200F8368D /* ContentView.swift */; };
 		D5DE62ED28D0F88900F8368D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5DE62EC28D0F88900F8368D /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D52203C828DA313600482BC5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D5DE62E528D0F88200F8368D /* Patinfly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patinfly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DE62E828D0F88200F8368D /* PatinflyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatinflyApp.swift; sourceTree = "<group>"; };
 		D5DE62EA28D0F88200F8368D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D52203CB28DA31C800482BC5 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D52203C828DA313600482BC5 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		D5DE62DC28D0F88200F8368D = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		D5DE62E728D0F88200F8368D /* Patinfly */ = {
 			isa = PBXGroup;
 			children = (
+				D52203CB28DA31C800482BC5 /* Login */,
 				D5DE62E828D0F88200F8368D /* PatinflyApp.swift */,
 				D5DE62EA28D0F88200F8368D /* ContentView.swift */,
 				D5DE62EC28D0F88900F8368D /* Assets.xcassets */,
@@ -259,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D52203C928DA313600482BC5 /* LoginView.swift in Sources */,
 				D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */,
 				D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */,
 			);
