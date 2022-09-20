@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var user: String = ""
-    @State var password: String = ""
+
     @State var labelText: String = "No selected"
     
     @StateObject private var loginViewModel = LoginViewModel()
@@ -17,16 +16,23 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Text("Patinfly").font(.largeTitle)
-            TextField("USER", text: $user).keyboardType(.emailAddress).padding(.horizontal,60).padding(.vertical,20)
+            TextField("EMAIL", text: $loginViewModel.credentials.email).keyboardType(.emailAddress)
             
-            SecureField("PASSWORD", text: $password).padding(.horizontal,60).padding(.vertical,20)
+            SecureField("PASSWORD", text: $loginViewModel.credentials.password)
+            if loginViewModel.showProgressView{
+                ProgressView()
+            }
             
-            Button("Sign In"){labelText = "Selected"}.padding(20)
+            Button("Sign In"){
+                loginViewModel.login{
+                    success in
+                }
+                labelText = "Selected"
+            }.disabled(loginViewModel.loginDisable).padding(20)
             
-        }
-        
-        TextField("", text: $labelText).padding(.horizontal,80)
-        
+            TextField("", text: $labelText).padding(.horizontal,80)
+            
+        }.padding(.horizontal,60).padding(.vertical,20).autocapitalization(.none).textFieldStyle(RoundedBorderTextFieldStyle()).disabled(loginViewModel.showProgressView)
     }
 }
 

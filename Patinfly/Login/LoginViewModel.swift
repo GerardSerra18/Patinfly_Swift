@@ -19,5 +19,14 @@ class LoginViewModel: ObservableObject{
     
     func login(completition: @escaping(Bool) -> Void){
         showProgressView = true
+        APIService.shared.login(credentials: credentials){[unowned self](result:Result<Bool, APIService.APIError>) in
+            showProgressView = false
+            switch result{
+                case .success:
+                    completition(true)
+                case .failure:
+                    completition(false)
+            }
+        }
     }
 }
