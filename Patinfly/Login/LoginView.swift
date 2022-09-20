@@ -8,13 +8,30 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State var user: String = ""
+    @State var password: String = ""
+    @State var labelText: String = "NO SELECTED"
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Patinfly").font(.largeTitle)
+            TextField("USER", text: $user).keyboardType(.emailAddress).padding(.horizontal,60).padding(.vertical,20)
+            
+            SecureField("PASSWORD", text: $password).padding(.horizontal,60).padding(.vertical,20)
+            
+            Button("Sign In"){labelText = "SELECTED"}.padding(20)
+            
+        }
+        
+        TextField("", text: $labelText).padding(.horizontal,80)
+        
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        Group {
+            LoginView().previewInterfaceOrientation(.portrait)
+            LoginView().previewInterfaceOrientation(.landscapeLeft)
+        }
     }
 }
