@@ -10,7 +10,10 @@ import SwiftUI
 struct LoginView: View {
     @State var user: String = ""
     @State var password: String = ""
-    @State var labelText: String = "NO SELECTED"
+    @State var labelText: String = "No selected"
+    
+    @StateObject private var loginViewModel = LoginViewModel()
+    
     var body: some View {
         VStack {
             Text("Patinfly").font(.largeTitle)
@@ -18,7 +21,7 @@ struct LoginView: View {
             
             SecureField("PASSWORD", text: $password).padding(.horizontal,60).padding(.vertical,20)
             
-            Button("Sign In"){labelText = "SELECTED"}.padding(20)
+            Button("Sign In"){labelText = "Selected"}.padding(20)
             
         }
         
