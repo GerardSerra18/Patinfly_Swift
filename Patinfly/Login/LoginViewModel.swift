@@ -11,6 +11,7 @@ class LoginViewModel: ObservableObject{
     
     @Published var credentials = Credentials()
     @Published var showProgressView = false
+    @Published var error: Authentication.AuthenticationError?
     
     var loginDisable: Bool{
         
@@ -19,15 +20,17 @@ class LoginViewModel: ObservableObject{
     
     func login(completition: @escaping(Bool) -> Void){
         showProgressView = true
-        APIService.shared.login(credentials: credentials){[unowned self](result:Result<Bool, APIService.APIError>) in
+        APIService.shared.login(credentials: credentials){[unowned self](result:Result<Bool, Authentication.AuthenticationError>) in
             showProgressView = false
             switch result{
                 case .success:
                     completition(true)
-                case .failure:
+                case .failure(let authError):
+                    credentials = Credentials()
+                    error = authError
                     completition(false)
             }
         }
     }
 }
-//Final lab3 prueba de commit despues de cerrar
+

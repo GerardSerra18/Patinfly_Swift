@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct PatinflyApp: App {
+    
+    @StateObject var authentication = Authentication()
+    
     var body: some Scene {
+        
         WindowGroup {
-            LoginView()
+            
+            if authentication.isValidated{
+                ContentView().environmentObject(authentication)
+            }
+            else{
+                LoginView().environmentObject(authentication)
+            }
+           
         }
     }
 }

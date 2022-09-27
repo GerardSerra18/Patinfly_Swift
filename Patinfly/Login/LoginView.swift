@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-
-    @State var labelText: String = "No selected"
     
+    //@State var labelText: String = "No selected"
     @StateObject private var loginViewModel = LoginViewModel()
+    @EnvironmentObject var authentication: Authentication
     
     var body: some View {
         VStack {
@@ -26,13 +26,20 @@ struct LoginView: View {
             Button("Sign In"){
                 loginViewModel.login{
                     success in
+                    authentication.updateValidation(success: success)
                 }
-                labelText = "Selected"
             }.disabled(loginViewModel.loginDisable).padding(20)
             
-            TextField("", text: $labelText).padding(.horizontal,80)
+            //TextField("", text: $labelText).padding(.horizontal,80)
             
-        }.padding(.horizontal,60).padding(.vertical,20).autocapitalization(.none).textFieldStyle(RoundedBorderTextFieldStyle()).disabled(loginViewModel.showProgressView)
+        }.padding(.horizontal,60)
+            .padding(.vertical,20)
+            .autocapitalization(.none)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .disabled(loginViewModel.showProgressView)
+            .alert(item: $loginViewModel.error){
+            error in Alert(title: Text("Error validació"), message: Text(error.localizedDescription))
+        }
     }
 }
 
