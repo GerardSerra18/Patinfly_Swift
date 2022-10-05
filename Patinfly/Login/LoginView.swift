@@ -12,25 +12,37 @@ struct LoginView: View {
     //@State var labelText: String = "No selected"
     @StateObject private var loginViewModel = LoginViewModel()
     @EnvironmentObject var authentication: Authentication
+    @State private var ToogleActivado = true
+    @State private var selection: String? = nil
     
     var body: some View {
         VStack {
-            Text("Patinfly").font(.largeTitle)
+            HStack{
+                Image("IniciApp")
+                Divider()
+
+            }.padding()
+            Text("Patinfly").font(.largeTitle).foregroundColor(.blue)
             TextField("EMAIL", text: $loginViewModel.credentials.email).keyboardType(.emailAddress)
             
             SecureField("PASSWORD", text: $loginViewModel.credentials.password)
             if loginViewModel.showProgressView{
                 ProgressView()
             }
-            
-            Button("Sign In"){
+            Toggle("Conditions", isOn: $ToogleActivado).padding()
+            Button("Login"){
                 loginViewModel.login{
                     success in
                     authentication.updateValidation(success: success)
                 }
-            }.disabled(loginViewModel.loginDisable).padding(20)
+            }
+            .disabled(loginViewModel.loginDisable).padding(20)
+            .disabled(!ToogleActivado)
             
-            //TextField("", text: $labelText).padding(.horizontal,80)
+            Button("Check Conditions"){
+                //Realizar el enlaze con un navigation link or navigation view
+            }
+            
             
         }.padding(.horizontal,60)
             .padding(.vertical,20)
