@@ -16,7 +16,6 @@
 		D5C4F42A28ECAB1C00055892 /* scooters.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42928ECAB1C00055892 /* scooters.json */; };
 		D5C4F42C28ECABD000055892 /* scooter.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42B28ECABD000055892 /* scooter.json */; };
 		D5C4F42E28ECAC1200055892 /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42D28ECAC1200055892 /* Scooter.swift */; };
-		D5C4F43028ED928D00055892 /* ConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42F28ED928D00055892 /* ConditionsView.swift */; };
 		D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62E828D0F88200F8368D /* PatinflyApp.swift */; };
 		D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62EA28D0F88200F8368D /* ContentView.swift */; };
 		D5DE62ED28D0F88900F8368D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5DE62EC28D0F88900F8368D /* Assets.xcassets */; };
@@ -53,7 +52,6 @@
 		D5C4F42928ECAB1C00055892 /* scooters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooters.json; sourceTree = "<group>"; };
 		D5C4F42B28ECABD000055892 /* scooter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooter.json; sourceTree = "<group>"; };
 		D5C4F42D28ECAC1200055892 /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
-		D5C4F42F28ED928D00055892 /* ConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionsView.swift; sourceTree = "<group>"; };
 		D5DE62E528D0F88200F8368D /* Patinfly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patinfly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DE62E828D0F88200F8368D /* PatinflyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatinflyApp.swift; sourceTree = "<group>"; };
 		D5DE62EA28D0F88200F8368D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				D52203C828DA313600482BC5 /* LoginView.swift */,
 				D52203CC28DA419200482BC5 /* LoginViewModel.swift */,
 				D52203CE28DA41C900482BC5 /* Credentials.swift */,
-				D5C4F42F28ED928D00055892 /* ConditionsView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -329,7 +326,6 @@
 				D52203C928DA313600482BC5 /* LoginView.swift in Sources */,
 				D52203CF28DA41C900482BC5 /* Credentials.swift in Sources */,
 				D5C4F42E28ECAC1200055892 /* Scooter.swift in Sources */,
-				D5C4F43028ED928D00055892 /* ConditionsView.swift in Sources */,
 				D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */,
 				D51161AC28E3678C0057AE80 /* APIService.swift in Sources */,
 				D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */,
