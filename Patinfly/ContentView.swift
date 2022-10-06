@@ -64,7 +64,7 @@ struct ScooterRowView: View {
                     HStack{
                         VStack{
                             
-                            let formattedFloat = String(format: "%1.f", battery_level)
+                            //let formattedFloat = String(format: "%1.f", battery_level)
                             if (battery_level == 100 ){
                                 Image(systemName: "battery.100").font(.system(size: 25.0)).foregroundColor(.green)
                                 //Text("Battery Level: \(formattedFloat)")
@@ -86,7 +86,7 @@ struct ScooterRowView: View {
                             Text(distance + "  m")
                             //sale 10 porque lo pusimos como constante, en el JSON hay KM y todos estan a 0.0
                             //Tendremos que realizar otro formattedFloat para poder poner por pantalla la vista del Float
-                            //Como en el caso de la bateria
+                            //Como en el caso de la bateria por si lo queremos imprimir
                         }
                     }.frame(width: 290, alignment: .trailing)
                 }

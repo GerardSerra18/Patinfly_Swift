@@ -17,7 +17,7 @@ class APIService{
     }
     
     func validUser(credentials: Credentials) -> Bool {
-        return ((credentials.email == "gerard.serra@estudiants.urv.cat") && (credentials.password == "password"))
+        return ((credentials.email == "gerard.serra@estudiants.urv.cat") && (credentials.password == "1234"))
     }
     
     func login(credentials: Credentials, completition: @escaping (Result<Bool, Authentication.AuthenticationError>)-> Void){

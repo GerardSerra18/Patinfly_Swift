@@ -18,36 +18,36 @@ struct LoginView: View {
     var body: some View {
         NavigationView{
             VStack {
-                HStack{
-                    Image("IniciApp")
-                    Divider()
+                Spacer()
+                Image("IniciApp")
+                Spacer()
+                VStack{
+                    Text("Patinfly").font(.largeTitle).foregroundColor(.blue)
+                    TextField("EMAIL", text: $loginViewModel.credentials.email).keyboardType(.emailAddress)
                     
-                }.padding()
-                Text("Patinfly").font(.largeTitle).foregroundColor(.blue)
-                TextField("EMAIL", text: $loginViewModel.credentials.email).keyboardType(.emailAddress)
-                
-                SecureField("PASSWORD", text: $loginViewModel.credentials.password)
-                if loginViewModel.showProgressView{
-                    ProgressView()
-                }
-                Toggle("Conditions", isOn: $ToogleActivado).padding()
-                Button("Login"){
-                    loginViewModel.login{
-                        success in
-                        authentication.updateValidation(success: success)
+                    SecureField("PASSWORD", text: $loginViewModel.credentials.password)
+                    if loginViewModel.showProgressView{
+                        ProgressView()
                     }
-                }
-                .disabled(loginViewModel.loginDisable).padding(20)
-                .disabled(!ToogleActivado)
-                
-                /*NavigationView{
-                 NavigationLink(destination: EmptyView()) {
-                 Text("Check Conditions")
-                 }
-                 }*/
-                
-                NavigationLink(destination: ConditionsView()){
-                    Text("Check Conditions")
+                    Toggle("Conditions", isOn: $ToogleActivado).padding()
+                    Button("Login"){
+                        loginViewModel.login{
+                            success in
+                            authentication.updateValidation(success: success)
+                        }
+                    }
+                    .disabled(loginViewModel.loginDisable).padding(20)
+                    .disabled(!ToogleActivado)
+                    
+                    /*NavigationView{
+                     NavigationLink(destination: EmptyView()) {
+                     Text("Check Conditions")
+                     }
+                     }*/
+                    
+                    NavigationLink(destination: ConditionsView()){
+                        Text("Check Conditions")
+                    }
                 }
             }
             
