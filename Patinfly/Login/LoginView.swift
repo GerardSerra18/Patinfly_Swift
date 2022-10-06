@@ -46,7 +46,7 @@ struct LoginView: View {
                  }
                  }*/
                 
-                NavigationLink(destination: ContentViewB()){
+                NavigationLink(destination: ConditionsView()){
                     Text("Check Conditions")
                 }
             }
@@ -70,13 +70,13 @@ struct LoginView_Previews: PreviewProvider {
         }
     }
 }
-struct ContentViewB : View {
+struct ConditionsView : View {
         var body: some View {
             NavigationView {
                 VStack {
                     Text("MIT License Copyright © 2015-2020 Mark Callow, Khronos Group Inc, and Contributors to the KTX project Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the Software), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: The above copyright notice and this permission notice (including the next paragraph) shall be included in all copies or substantial portions of the Software.")
 
-                }.navigationBarTitle("TERMS AND CONDITIONS")
+                }
                 .navigationBarHidden(true)
                 .padding()
             }

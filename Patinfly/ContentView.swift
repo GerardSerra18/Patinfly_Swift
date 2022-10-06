@@ -16,7 +16,8 @@ struct ContentView: View {
             VStack{
                 List{
                     ForEach(scooters.scooters){ scooter in
-                        ScooterRowView(name: scooter.name, uuid: scooter.state, distance: "10")
+                        ScooterRowView(
+                            name: scooter.name, uuid: scooter.state, distance: "10", battery_level: scooter.battery_level)
                     }
                 }
             }.navigationTitle("Scooters")
@@ -47,14 +48,22 @@ struct ScooterRowView: View {
     let name: String
     let uuid: String
     let distance: String
+    let battery_level: Float
     
     var body: some View{
         VStack{
             VStack(alignment: .leading, spacing: 10){
                 Text(name).bold().foregroundColor(.black).font(.body)
                 HStack{
-                    Text(uuid).font(.body)
+                    if uuid == "ACTIVE"{
+                        Image(systemName: "scooter").font(.system(size: 25.0)).foregroundColor(.green)
+                    }
+                    else{
+                        Image(systemName: "scooter").font(.system(size: 25.0)).foregroundColor(.red)
+                    }
                     HStack{
+//                        Text("Nivel bateria:")
+//                        Text(battery_level)
                         Text("Km:")
                         Text(distance)
                     }.frame(width: 290, alignment: .trailing)
