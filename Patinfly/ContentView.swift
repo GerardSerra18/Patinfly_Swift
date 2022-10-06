@@ -62,10 +62,29 @@ struct ScooterRowView: View {
                         Image(systemName: "scooter").font(.system(size: 25.0)).foregroundColor(.red)
                     }
                     HStack{
-//                        Text("Nivel bateria:")
-//                        Text(battery_level)
-                        Text("Km:")
-                        Text(distance)
+                        VStack{
+                            
+                            let formattedFloat = String(format: "%1.f", battery_level)
+                            if (battery_level == 100 ){
+                                Image(systemName: "battery.100").font(.system(size: 25.0)).foregroundColor(.green)
+                                //Text("Battery Level: \(formattedFloat)")
+                            }
+                            else if (battery_level < 100 && battery_level > 50){
+                                Image(systemName: "battery.75").font(.system(size: 25.0)).foregroundColor(.green)
+                                //Text("Battery Level: \(formattedFloat)")
+                            }
+                            else if (battery_level == 50){
+                                Image(systemName: "battery.50").font(.system(size: 25.0)).foregroundColor(.orange)
+                                //Text("Battery Level: \(formattedFloat)")
+                            }
+                            else{
+                                Image(systemName: "battery.25").font(.system(size: 25.0)).foregroundColor(.red)
+                                //Text("Battery Level: \(formattedFloat)").foregroundColor(.green)
+                            }
+                            Spacer()
+                            //Text("Km:")
+                            Text(distance + "  m") //sale 10 porque lo pusimos como constante, en el JSON hay KM y todos estan a 0.0
+                        }
                     }.frame(width: 290, alignment: .trailing)
                 }
             }
