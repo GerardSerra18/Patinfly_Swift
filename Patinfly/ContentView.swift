@@ -83,7 +83,10 @@ struct ScooterRowView: View {
                             }
                             Spacer()
                             //Text("Km:")
-                            Text(distance + "  m") //sale 10 porque lo pusimos como constante, en el JSON hay KM y todos estan a 0.0
+                            Text(distance + "  m")
+                            //sale 10 porque lo pusimos como constante, en el JSON hay KM y todos estan a 0.0
+                            //Tendremos que realizar otro formattedFloat para poder poner por pantalla la vista del Float
+                            //Como en el caso de la bateria
                         }
                     }.frame(width: 290, alignment: .trailing)
                 }
