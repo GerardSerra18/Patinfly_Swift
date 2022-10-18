@@ -43,12 +43,11 @@ struct LoginView: View {
                         Text("Check Conditions")
                     }
                     //Window to check the conditions using navigation view and navigation link without using another class, the text is at the bottom of the page
-                }
+                }.padding(.horizontal,60)
+                    .padding(.vertical,20)
             }
             
-        }.padding(.horizontal,60)
-            .padding(.vertical,20)
-            .autocapitalization(.none)
+        }.autocapitalization(.none)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .disabled(loginViewModel.showProgressView)
             .alert(item: $loginViewModel.error){
