@@ -38,16 +38,11 @@ struct LoginView: View {
                     }
                     .disabled(loginViewModel.loginDisable).padding(20)
                     .disabled(!ToogleActivado)
-                    
-                    /*NavigationView{
-                     NavigationLink(destination: EmptyView()) {
-                     Text("Check Conditions")
-                     }
-                     }*/
-                    
+                
                     NavigationLink(destination: ConditionsView()){
                         Text("Check Conditions")
                     }
+                    //Window to check the conditions using navigation view and navigation link
                 }
             }
             
