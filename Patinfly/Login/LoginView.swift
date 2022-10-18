@@ -42,7 +42,7 @@ struct LoginView: View {
                     NavigationLink(destination: ConditionsView()){
                         Text("Check Conditions")
                     }
-                    //Window to check the conditions using navigation view and navigation link
+                    //Window to check the conditions using navigation view and navigation link without using another class, the text is at the bottom of the page
                 }
             }
             
