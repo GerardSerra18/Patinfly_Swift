@@ -12,15 +12,20 @@ struct ContentView: View {
     @State var scooters:Scooters = Scooters(scooters: [])
 
     var body: some View {
-        NavigationView{
+        
+        return NavigationView{
             VStack{
                 List{
                     ForEach(scooters.scooters){ scooter in
-                        ScooterRowView(
-                            name: scooter.name, uuid: scooter.state, distance: "10", battery_level: scooter.battery_level)
+                        NavigationLink(destination: ScooterDetailView(selectedScooter: scooter)){
+                            ScooterRowView(
+                                name: scooter.name, uuid: scooter.state, distance: "10", battery_level: scooter.battery_level)
+                        }
                     }
                 }
             }.navigationTitle("Scooters")
+            
+            
         }.onAppear{
             if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
                 do{
@@ -92,5 +97,15 @@ struct ScooterRowView: View {
                 }
             }
         }
+    }
+}
+
+struct ScooterDetailView: View {
+    
+    var selectedScooter: Scooter
+    
+    var body: some View{
+        
+        Text(selectedScooter.uuid).font(.largeTitle).foregroundColor(.red).padding()
     }
 }
