@@ -12,6 +12,10 @@
 		D52203C928DA313600482BC5 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52203C828DA313600482BC5 /* LoginView.swift */; };
 		D52203CD28DA419200482BC5 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52203CC28DA419200482BC5 /* LoginViewModel.swift */; };
 		D52203CF28DA41C900482BC5 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52203CE28DA41C900482BC5 /* Credentials.swift */; };
+		D5643FF528FF4F19003859B6 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FF428FF4F19003859B6 /* MapView.swift */; };
+		D5643FF728FF6635003859B6 /* ScooterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FF628FF6635003859B6 /* ScooterDetailView.swift */; };
+		D5643FF928FF6820003859B6 /* ActiveRentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FF828FF6820003859B6 /* ActiveRentView.swift */; };
+		D5643FFB28FF7EB7003859B6 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FFA28FF7EB7003859B6 /* CircleImage.swift */; };
 		D5C4F42728EC9BA100055892 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42628EC9BA100055892 /* SplashScreen.swift */; };
 		D5C4F42A28ECAB1C00055892 /* scooters.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42928ECAB1C00055892 /* scooters.json */; };
 		D5C4F42C28ECABD000055892 /* scooter.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42B28ECABD000055892 /* scooter.json */; };
@@ -48,6 +52,10 @@
 		D52203C828DA313600482BC5 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D52203CC28DA419200482BC5 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D52203CE28DA41C900482BC5 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		D5643FF428FF4F19003859B6 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D5643FF628FF6635003859B6 /* ScooterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterDetailView.swift; sourceTree = "<group>"; };
+		D5643FF828FF6820003859B6 /* ActiveRentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRentView.swift; sourceTree = "<group>"; };
+		D5643FFA28FF7EB7003859B6 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		D5C4F42628EC9BA100055892 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D5C4F42928ECAB1C00055892 /* scooters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooters.json; sourceTree = "<group>"; };
 		D5C4F42B28ECABD000055892 /* scooter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooter.json; sourceTree = "<group>"; };
@@ -103,6 +111,8 @@
 			children = (
 				D51161AE28E36A750057AE80 /* Authentication.swift */,
 				D5C4F42D28ECAC1200055892 /* Scooter.swift */,
+				D5643FF428FF4F19003859B6 /* MapView.swift */,
+				D5643FFA28FF7EB7003859B6 /* CircleImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -150,11 +160,13 @@
 			isa = PBXGroup;
 			children = (
 				D5C4F42828ECAAD000055892 /* data */,
-				D5C4F42628EC9BA100055892 /* SplashScreen.swift */,
 				D51161AD28E36A570057AE80 /* Models */,
 				D51161AA28E3676C0057AE80 /* Services */,
 				D52203CB28DA31C800482BC5 /* Login */,
 				D5DE62E828D0F88200F8368D /* PatinflyApp.swift */,
+				D5643FF828FF6820003859B6 /* ActiveRentView.swift */,
+				D5C4F42628EC9BA100055892 /* SplashScreen.swift */,
+				D5643FF628FF6635003859B6 /* ScooterDetailView.swift */,
 				D5DE62EA28D0F88200F8368D /* ContentView.swift */,
 				D5DE62EC28D0F88900F8368D /* Assets.xcassets */,
 				D5DE62F128D0F88900F8368D /* Patinfly.entitlements */,
@@ -323,12 +335,16 @@
 				D5C4F42728EC9BA100055892 /* SplashScreen.swift in Sources */,
 				D51161AF28E36A750057AE80 /* Authentication.swift in Sources */,
 				D52203CD28DA419200482BC5 /* LoginViewModel.swift in Sources */,
+				D5643FFB28FF7EB7003859B6 /* CircleImage.swift in Sources */,
 				D52203C928DA313600482BC5 /* LoginView.swift in Sources */,
 				D52203CF28DA41C900482BC5 /* Credentials.swift in Sources */,
 				D5C4F42E28ECAC1200055892 /* Scooter.swift in Sources */,
 				D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */,
+				D5643FF528FF4F19003859B6 /* MapView.swift in Sources */,
+				D5643FF728FF6635003859B6 /* ScooterDetailView.swift in Sources */,
 				D51161AC28E3678C0057AE80 /* APIService.swift in Sources */,
 				D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */,
+				D5643FF928FF6820003859B6 /* ActiveRentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -99,13 +99,3 @@ struct ScooterRowView: View {
         }
     }
 }
-
-struct ScooterDetailView: View {
-    
-    var selectedScooter: Scooter
-    
-    var body: some View{
-        
-        Text(selectedScooter.uuid).font(.largeTitle).foregroundColor(.red).padding()
-    }
-}
