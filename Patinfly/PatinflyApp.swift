@@ -21,7 +21,7 @@ struct PatinflyApp: App {
             }
             else{
                 SplashScreen().environmentObject(authentication)
-                //LoginView().environmentObject(authentication)
+                
             }
            
         }
