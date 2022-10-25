@@ -12,7 +12,7 @@ struct ScooterDetailView: View {
     var selectedScooter: Scooter
 
     var body: some View{
-        NavigationView{
+        
             VStack{
                 MapView()
                     .ignoresSafeArea()
@@ -44,7 +44,6 @@ struct ScooterDetailView: View {
                         let formattedFloat = String(format: "%.1f", selectedScooter.battery_level)
                         Text("\(formattedFloat)")
                     }.padding()
-                    
                     VStack{
                         NavigationLink(destination: ActiveRentView(selectedScooter: selectedScooter)){
                                 HStack{
@@ -61,6 +60,7 @@ struct ScooterDetailView: View {
                         .padding(.leading)
                 }
             }
-        }
+        
     }
 }
+

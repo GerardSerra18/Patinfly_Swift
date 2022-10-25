@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ScooterListView: View {
     
     @State var scooters:Scooters = Scooters(scooters: [])
 
@@ -42,9 +42,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ScooterListView_Previews: PreviewProvider {
     static var previews: some View {
-            ContentView()
+            ScooterListView()
     }
 }
 

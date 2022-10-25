@@ -14,7 +14,7 @@ struct ActiveRentView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View{
-        NavigationView{
+        
             VStack{
                 MapView()
                     .ignoresSafeArea()
@@ -44,15 +44,18 @@ struct ActiveRentView: View {
                     }.padding()
                     
                     VStack{
-                        NavigationLink(destination: ScooterDetailView(selectedScooter: selectedScooter)){
+                        NavigationLink(destination: ScooterListView().navigationBarBackButtonHidden(true)){
                             HStack{
                                 Image(systemName: "stop.circle.fill").foregroundColor(.white)
                                 Text("STOP").font(.headline).foregroundColor(.white)
                                 
+                                
                             }.padding(20)
                                 .background(Color.blue)
                                 .cornerRadius(10)
+                                
                         }
+                        
                     }.padding(.horizontal,120)
                         .padding(.vertical,80)
                         .padding(.leading)
@@ -71,7 +74,7 @@ struct ActiveRentView: View {
                     }
                 
                 }
-            }
+            
         }
     }
     

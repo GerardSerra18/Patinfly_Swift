@@ -17,7 +17,7 @@ struct PatinflyApp: App {
         WindowGroup {
             
             if authentication.isValidated{
-                ContentView().environmentObject(authentication)
+                ScooterListView().environmentObject(authentication)
             }
             else{
                 SplashScreen().environmentObject(authentication)

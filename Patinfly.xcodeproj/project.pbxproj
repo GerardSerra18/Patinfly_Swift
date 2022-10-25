@@ -21,7 +21,7 @@
 		D5C4F42C28ECABD000055892 /* scooter.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42B28ECABD000055892 /* scooter.json */; };
 		D5C4F42E28ECAC1200055892 /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42D28ECAC1200055892 /* Scooter.swift */; };
 		D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62E828D0F88200F8368D /* PatinflyApp.swift */; };
-		D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62EA28D0F88200F8368D /* ContentView.swift */; };
+		D5DE62EB28D0F88200F8368D /* ScooterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62EA28D0F88200F8368D /* ScooterListView.swift */; };
 		D5DE62ED28D0F88900F8368D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5DE62EC28D0F88900F8368D /* Assets.xcassets */; };
 		D5DE62F028D0F88900F8368D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5DE62EF28D0F88900F8368D /* Preview Assets.xcassets */; };
 		D5DE62FB28D0F88900F8368D /* PatinflyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62FA28D0F88900F8368D /* PatinflyTests.swift */; };
@@ -62,7 +62,7 @@
 		D5C4F42D28ECAC1200055892 /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
 		D5DE62E528D0F88200F8368D /* Patinfly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patinfly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DE62E828D0F88200F8368D /* PatinflyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatinflyApp.swift; sourceTree = "<group>"; };
-		D5DE62EA28D0F88200F8368D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D5DE62EA28D0F88200F8368D /* ScooterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterListView.swift; sourceTree = "<group>"; };
 		D5DE62EC28D0F88900F8368D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5DE62EF28D0F88900F8368D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D5DE62F128D0F88900F8368D /* Patinfly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Patinfly.entitlements; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		D5F94A0B29000042007F9FA5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D5DE62EA28D0F88200F8368D /* ContentView.swift */,
+				D5DE62EA28D0F88200F8368D /* ScooterListView.swift */,
 				D5643FF628FF6635003859B6 /* ScooterDetailView.swift */,
 				D5643FF828FF6820003859B6 /* ActiveRentView.swift */,
 				D5643FF428FF4F19003859B6 /* MapView.swift */,
@@ -347,7 +347,7 @@
 				D52203C928DA313600482BC5 /* LoginView.swift in Sources */,
 				D52203CF28DA41C900482BC5 /* Credentials.swift in Sources */,
 				D5C4F42E28ECAC1200055892 /* Scooter.swift in Sources */,
-				D5DE62EB28D0F88200F8368D /* ContentView.swift in Sources */,
+				D5DE62EB28D0F88200F8368D /* ScooterListView.swift in Sources */,
 				D5643FF528FF4F19003859B6 /* MapView.swift in Sources */,
 				D5643FF728FF6635003859B6 /* ScooterDetailView.swift in Sources */,
 				D51161AC28E3678C0057AE80 /* APIService.swift in Sources */,
