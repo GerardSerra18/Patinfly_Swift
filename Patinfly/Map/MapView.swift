@@ -5,7 +5,6 @@
 //  Created by Gerard Serra Rodríguez on 18/10/22.
 //
 
-import Foundation
 import SwiftUI
 import MapKit
 
@@ -16,7 +15,20 @@ struct MapView: View {
     )
     
     var body: some View{
-        Map(coordinateRegion: $region)
+        VStack{
+            Map(coordinateRegion: $region)
+                .frame(width: 400, height: 300)
+            Spacer()
+        }.onAppear(){
+            LocationManager.shared.getUserLocation{ location in
+                DispatchQueue.main.async{
+                    region.center.latitude = location.coordinate.latitude
+                    region.center.longitude = location.coordinate.longitude
+                    
+                }
+                
+            }
+        }
     }
 }
 
@@ -26,3 +38,5 @@ struct MapView_Previews: PreviewProvider {
             .ignoresSafeArea(edges: .top)
     }
 }
+
+

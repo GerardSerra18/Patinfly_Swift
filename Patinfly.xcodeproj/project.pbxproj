@@ -16,6 +16,7 @@
 		D5643FF728FF6635003859B6 /* ScooterDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FF628FF6635003859B6 /* ScooterDetailView.swift */; };
 		D5643FF928FF6820003859B6 /* ActiveRentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FF828FF6820003859B6 /* ActiveRentView.swift */; };
 		D5643FFB28FF7EB7003859B6 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5643FFA28FF7EB7003859B6 /* CircleImage.swift */; };
+		D565E46A29228F8200CCD840 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E46929228F8200CCD840 /* LocationManager.swift */; };
 		D5C4F42728EC9BA100055892 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42628EC9BA100055892 /* SplashScreen.swift */; };
 		D5C4F42A28ECAB1C00055892 /* scooters.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42928ECAB1C00055892 /* scooters.json */; };
 		D5C4F42C28ECABD000055892 /* scooter.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42B28ECABD000055892 /* scooter.json */; };
@@ -56,6 +57,8 @@
 		D5643FF628FF6635003859B6 /* ScooterDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterDetailView.swift; sourceTree = "<group>"; };
 		D5643FF828FF6820003859B6 /* ActiveRentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRentView.swift; sourceTree = "<group>"; };
 		D5643FFA28FF7EB7003859B6 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		D565E46929228F8200CCD840 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D565E46B292293FD00CCD840 /* LocationFile.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationFile.gpx; sourceTree = "<group>"; };
 		D5C4F42628EC9BA100055892 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D5C4F42928ECAB1C00055892 /* scooters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooters.json; sourceTree = "<group>"; };
 		D5C4F42B28ECABD000055892 /* scooter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooter.json; sourceTree = "<group>"; };
@@ -126,6 +129,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		D565E46829228F5C00CCD840 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D5643FF428FF4F19003859B6 /* MapView.swift */,
+				D565E46929228F8200CCD840 /* LocationManager.swift */,
+				D565E46B292293FD00CCD840 /* LocationFile.gpx */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		D5C4F42828ECAAD000055892 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +171,7 @@
 		D5DE62E728D0F88200F8368D /* Patinfly */ = {
 			isa = PBXGroup;
 			children = (
+				D565E46829228F5C00CCD840 /* Map */,
 				D5F94A0B29000042007F9FA5 /* Views */,
 				D5C4F42828ECAAD000055892 /* data */,
 				D51161AD28E36A570057AE80 /* Models */,
@@ -203,7 +217,6 @@
 				D5DE62EA28D0F88200F8368D /* ScooterListView.swift */,
 				D5643FF628FF6635003859B6 /* ScooterDetailView.swift */,
 				D5643FF828FF6820003859B6 /* ActiveRentView.swift */,
-				D5643FF428FF4F19003859B6 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -350,6 +363,7 @@
 				D5DE62EB28D0F88200F8368D /* ScooterListView.swift in Sources */,
 				D5643FF528FF4F19003859B6 /* MapView.swift in Sources */,
 				D5643FF728FF6635003859B6 /* ScooterDetailView.swift in Sources */,
+				D565E46A29228F8200CCD840 /* LocationManager.swift in Sources */,
 				D51161AC28E3678C0057AE80 /* APIService.swift in Sources */,
 				D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */,
 				D5643FF928FF6820003859B6 /* ActiveRentView.swift in Sources */,
