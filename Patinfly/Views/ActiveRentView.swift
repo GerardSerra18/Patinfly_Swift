@@ -7,17 +7,34 @@
 
 import Foundation
 import SwiftUI
+import _MapKit_SwiftUI
 struct ActiveRentView: View {
     
     var selectedScooter: Scooter
     @State var StartTime = 00*00*00
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.1322888, longitude: 1.2452031), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    struct Place: Identifiable {
+        let id = UUID()
+        let name: String
+        let latitude: Double
+        let longitude: Double
+        var coordinate: CLLocationCoordinate2D {
+            CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+    }
 
     var body: some View{
         
+        let places = [
+            Place(name: "Position 1", latitude: 31.21, longitude: 120.50)
+        ]
+        
             VStack{
-                MapView()
-                    .ignoresSafeArea()
+                Map(coordinateRegion: $region, showsUserLocation: true,  annotationItems: places){ place in
+                   // MapPin(coordinate: place.coordinate)
+                    MapMarker(coordinate: place.coordinate)
+                }.ignoresSafeArea()
                 CircleImage()
                     .offset(y: -70)
                     .padding(.bottom, -100)

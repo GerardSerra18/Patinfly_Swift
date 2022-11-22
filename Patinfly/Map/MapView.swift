@@ -14,6 +14,7 @@ struct MapView: View {
         span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
     )
     
+    
     var body: some View{
         VStack{
             Map(coordinateRegion: $region)
@@ -26,10 +27,12 @@ struct MapView: View {
                     region.center.longitude = location.coordinate.longitude
                     
                 }
-                
             }
         }
+
     }
+    
+    
 }
 
 struct MapView_Previews: PreviewProvider {

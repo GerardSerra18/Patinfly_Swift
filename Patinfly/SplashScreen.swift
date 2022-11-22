@@ -21,7 +21,8 @@ struct SplashScreen: View{
                 ScooterListView()
             }
             else{
-                LoginView()
+                //LoginView()
+                ScooterListView()
             }
         }
         else{
@@ -39,7 +40,7 @@ struct SplashScreen: View{
                 }
                 }
             }.onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 10.0){//Segundos que esta activado el splash
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){//Segundos que esta activado el splash
                     withAnimation{
                         self.isActive = true
                     }

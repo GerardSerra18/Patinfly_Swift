@@ -27,6 +27,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
         }
         completion?(location)
         manager.stopUpdatingLocation()
+
     }
     
 }
