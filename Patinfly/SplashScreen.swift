@@ -10,6 +10,9 @@ import SwiftUI
 struct SplashScreen: View{
     
     @StateObject var authentication = Authentication()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
+    @StateObject var dataController = DataController()
     
     @State private var isActive = false
     @State private var size = 0.8
@@ -18,11 +21,11 @@ struct SplashScreen: View{
     var body: some View{
         if self.isActive{
             if authentication.isValidated{
-                ScooterListView()
+                ScooterListView().environment(\.managedObjectContext, dataController.container.viewContext)
             }
             else{
-                //LoginView()
-                ScooterListView()
+                //LoginView().environment(\.managedObjectContext, dataController.container.viewContext)
+                ScooterListView().environment(\.managedObjectContext, dataController.container.viewContext) //solo para pruebas !!!
             }
         }
         else{
@@ -43,6 +46,21 @@ struct SplashScreen: View{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){//Segundos que esta activado el splash
                     withAnimation{
                         self.isActive = true
+                    }
+                    if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
+                        do{
+                            let dataController = DataController()
+                            let jsonData = try Data(contentsOf: url)
+                            print(jsonData)
+                            let decoder = JSONDecoder()
+                            print(try decoder.decode(Scooters.self, from: jsonData))
+                            let scooters: Scooters = try decoder.decode(Scooters.self, from: jsonData)
+                            for scooter in scooters.scooters{
+                                dataController.save(name: scooter.name, uuid: scooter.uuid, latitude: scooter.latitude, longitude: scooter.longitude, km_use: scooter.km_use, battery_level: scooter.battery_level, date_last_maintenance: scooter.date_last_maintenance, state: scooter.state, on_rent: scooter.on_rent)
+                            }
+                        }catch{
+                            print(error)
+                        }
                     }
                 }
             }

@@ -10,17 +10,20 @@ import SwiftUI
 @main
 struct PatinflyApp: App {
     
+//    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
     @StateObject var authentication = Authentication()
+    @StateObject var dataController = DataController()
+//    @Environment(\.managedObjectContext) var moc
     
     var body: some Scene {
         
         WindowGroup {
             
             if authentication.isValidated{
-                ScooterListView().environmentObject(authentication)
+                ScooterListView().environmentObject(authentication).environment(\.managedObjectContext, dataController.container.viewContext)
             }
             else{
-                SplashScreen().environmentObject(authentication)
+                SplashScreen().environmentObject(authentication).environment(\.managedObjectContext, dataController.container.viewContext)
                 
             }
            

@@ -11,8 +11,13 @@ import _MapKit_SwiftUI
 struct ActiveRentView: View {
     
     var selectedScooter: Scooter
+    
     @State var StartTime = 00*00*00
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.1322888, longitude: 1.2452031), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     struct Place: Identifiable {
         let id = UUID()

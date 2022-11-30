@@ -14,6 +14,9 @@ struct ScooterDetailView: View {
     var selectedScooter: Scooter
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.1322888, longitude: 1.2452031), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
     
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
+    
     struct Place: Identifiable {
         let id = UUID()
         let name: String
@@ -66,7 +69,20 @@ struct ScooterDetailView: View {
                         NavigationLink(destination: ActiveRentView(selectedScooter: selectedScooter)){
                             HStack{
                                 Image(systemName: "figure.skiing.crosscountry").foregroundColor(.white)
-                                Text("RENT").font(.headline).foregroundColor(.white)
+                                Button("RENT"){
+                                    let scooter_data: ScooterDB = ScooterDB(context: moc)
+                                    scooter_data.uuid = selectedScooter.uuid
+                                    scooter_data.name = selectedScooter.name
+                                    scooter_data.longitude = selectedScooter.longitude
+                                    scooter_data.latitude = selectedScooter.latitude
+                                    scooter_data.km_use = selectedScooter.km_use
+                                    scooter_data.date_last_maintenance = selectedScooter.date_last_maintenance
+                                    scooter_data.battery_level = selectedScooter.battery_level
+                                    scooter_data.state = selectedScooter.state
+                                    scooter_data.on_rent = selectedScooter.on_rent
+                                    scooter_data.id = selectedScooter.id
+                                    try? moc.save()
+                                }
                                 
                             }.padding(20)
                                 .background(Color.blue)
