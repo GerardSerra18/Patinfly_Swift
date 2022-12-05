@@ -13,7 +13,6 @@ struct PatinflyApp: App {
 //    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
     @StateObject var authentication = Authentication()
     @StateObject var dataController = DataController()
-//    @Environment(\.managedObjectContext) var moc
     
     var body: some Scene {
         

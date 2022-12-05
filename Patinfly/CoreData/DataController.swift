@@ -20,19 +20,18 @@ class DataController: ObservableObject{
         }
     }
     
-    func save(name: String, uuid: String, latitude: Float, longitude: Float, km_use: Float, battery_level: Float, date_last_maintenance: String, state: String, on_rent: Bool){
-        // NSManagedObjectContext
-        let scooter = ScooterDB(context: container.viewContext)
-        scooter.name = name
-        scooter.uuid = uuid
-        scooter.latitude = latitude
-        scooter.longitude = longitude
-        scooter.km_use = km_use
-        scooter.battery_level = battery_level
-        scooter.date_last_maintenance = date_last_maintenance
-        scooter.state = state
-        scooter.on_rent = on_rent
+    func save(scooter: Scooter){
+        let ScooterToSave: ScooterDB = ScooterDB(context: container.viewContext)
         
+        ScooterToSave.id = scooter.id
+        ScooterToSave.name = scooter.name
+        ScooterToSave.uuid = scooter.uuid
+        ScooterToSave.longitude = scooter.longitude
+        ScooterToSave.latitude = scooter.latitude
+        ScooterToSave.battery_level = scooter.battery_level
+        ScooterToSave.date_last_maintenance = scooter.date_last_maintenance
+        ScooterToSave.state = scooter.state
+        ScooterToSave.on_rent = scooter.on_rent
         try? container.viewContext.save()
     }
     

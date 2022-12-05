@@ -21,7 +21,6 @@
 		D565E46A29228F8200CCD840 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D565E46929228F8200CCD840 /* LocationManager.swift */; };
 		D5C4F42728EC9BA100055892 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42628EC9BA100055892 /* SplashScreen.swift */; };
 		D5C4F42A28ECAB1C00055892 /* scooters.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42928ECAB1C00055892 /* scooters.json */; };
-		D5C4F42C28ECABD000055892 /* scooter.json in Resources */ = {isa = PBXBuildFile; fileRef = D5C4F42B28ECABD000055892 /* scooter.json */; };
 		D5C4F42E28ECAC1200055892 /* Scooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C4F42D28ECAC1200055892 /* Scooter.swift */; };
 		D5DE62E928D0F88200F8368D /* PatinflyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62E828D0F88200F8368D /* PatinflyApp.swift */; };
 		D5DE62EB28D0F88200F8368D /* ScooterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE62EA28D0F88200F8368D /* ScooterListView.swift */; };
@@ -66,8 +65,8 @@
 		D565E46B292293FD00CCD840 /* LocationFile.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationFile.gpx; sourceTree = "<group>"; };
 		D5C4F42628EC9BA100055892 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		D5C4F42928ECAB1C00055892 /* scooters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooters.json; sourceTree = "<group>"; };
-		D5C4F42B28ECABD000055892 /* scooter.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = scooter.json; sourceTree = "<group>"; };
 		D5C4F42D28ECAC1200055892 /* Scooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scooter.swift; sourceTree = "<group>"; };
+		D5DC0C90293E75750061C2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5DE62E528D0F88200F8368D /* Patinfly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patinfly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5DE62E828D0F88200F8368D /* PatinflyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatinflyApp.swift; sourceTree = "<group>"; };
 		D5DE62EA28D0F88200F8368D /* ScooterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScooterListView.swift; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		D544610B29367E12009C7571 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				D5C4F42928ECAB1C00055892 /* scooters.json */,
 				D544610C29367E2B009C7571 /* DataController.swift */,
 				D544610E29367E3D009C7571 /* ScooterDB.xcdatamodeld */,
 			);
@@ -156,8 +156,6 @@
 		D5C4F42828ECAAD000055892 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				D5C4F42928ECAB1C00055892 /* scooters.json */,
-				D5C4F42B28ECABD000055892 /* scooter.json */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -185,9 +183,10 @@
 		D5DE62E728D0F88200F8368D /* Patinfly */ = {
 			isa = PBXGroup;
 			children = (
+				D5DC0C90293E75750061C2FE /* Info.plist */,
 				D544610B29367E12009C7571 /* CoreData */,
 				D565E46829228F5C00CCD840 /* Map */,
-				D5F94A0B29000042007F9FA5 /* Views */,
+				D5F94A0B29000042007F9FA5 /* ScootersViews */,
 				D5C4F42828ECAAD000055892 /* data */,
 				D51161AD28E36A570057AE80 /* Models */,
 				D51161AA28E3676C0057AE80 /* Services */,
@@ -227,14 +226,14 @@
 			path = PatinflyUITests;
 			sourceTree = "<group>";
 		};
-		D5F94A0B29000042007F9FA5 /* Views */ = {
+		D5F94A0B29000042007F9FA5 /* ScootersViews */ = {
 			isa = PBXGroup;
 			children = (
 				D5DE62EA28D0F88200F8368D /* ScooterListView.swift */,
 				D5643FF628FF6635003859B6 /* ScooterDetailView.swift */,
 				D5643FF828FF6820003859B6 /* ActiveRentView.swift */,
 			);
-			path = Views;
+			path = ScootersViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,7 +340,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5C4F42C28ECABD000055892 /* scooter.json in Resources */,
 				D5C4F42A28ECAB1C00055892 /* scooters.json in Resources */,
 				D5DE62F028D0F88900F8368D /* Preview Assets.xcassets in Resources */,
 				D5DE62ED28D0F88900F8368D /* Assets.xcassets in Resources */,
@@ -546,10 +544,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Patinfly/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Patinfly/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Test3;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to locate user and scooters. The user can see the closer scooters when location is autorized";
 				INFOPLIST_KEY_UILaunchStoryboardName = ma;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -578,10 +579,13 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Patinfly/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Patinfly/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = Test3;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location is used to locate user and scooters. The user can see the closer scooters when location is autorized";
 				INFOPLIST_KEY_UILaunchStoryboardName = ma;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

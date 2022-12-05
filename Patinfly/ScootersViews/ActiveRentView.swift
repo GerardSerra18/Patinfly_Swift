@@ -10,13 +10,14 @@ import SwiftUI
 import _MapKit_SwiftUI
 struct ActiveRentView: View {
     
-    var selectedScooter: Scooter
+    var scooter: ScooterDB
+    @StateObject var dataController = DataController()
+    @Environment(\.managedObjectContext) var moc
+
     
     @State var StartTime = 00*00*00
     @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.1322888, longitude: 1.2452031), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
-    
-    @Environment(\.managedObjectContext) var moc
-    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
+
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     struct Place: Identifiable {
@@ -47,21 +48,21 @@ struct ActiveRentView: View {
                 VStack(alignment: .leading){
                     
                     HStack{
-                        Text(selectedScooter.name).foregroundColor(.black).padding()
+                        Text(scooter.name!).foregroundColor(.black).padding()
                         Spacer()
-                        if (selectedScooter.battery_level == 100 ){
+                        if (scooter.battery_level == 100 ){
                             Image(systemName: "battery.100").font(.system(size: 25.0)).foregroundColor(.green)
                         }
-                        else if (selectedScooter.battery_level < 100 && selectedScooter.battery_level > 50){
+                        else if (scooter.battery_level < 100 && scooter.battery_level > 50){
                             Image(systemName: "battery.75").font(.system(size: 25.0)).foregroundColor(.green)
                         }
-                        else if (selectedScooter.battery_level == 50){
+                        else if (scooter.battery_level == 50){
                             Image(systemName: "battery.50").font(.system(size: 25.0)).foregroundColor(.orange)
                         }
                         else{
                             Image(systemName: "battery.25").font(.system(size: 25.0)).foregroundColor(.red)
                         }
-                        let formattedFloat = String(format: "%.1f", selectedScooter.battery_level)
+                        let formattedFloat = String(format: "%.1f", scooter.battery_level)
                         Text("\(formattedFloat)")
                     }.padding()
                     

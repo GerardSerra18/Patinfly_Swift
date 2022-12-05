@@ -9,56 +9,46 @@ import SwiftUI
 
 struct ScooterListView: View {
     
-    //@State var scooters:Scooters = Scooters(scooters: []) //Lo hacia servir solo para cuando lo añadiamos directamente del json
+    //@State var scooters: Scooters = Scooters(scooters: []) //Lo hacia servir solo para cuando lo añadiamos directamente del json
     
     @StateObject var dataController = DataController()
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
+    @FetchRequest (sortDescriptors:[]) var scooters: FetchedResults<ScooterDB>
 
     var body: some View {
+    
+//        return NavigationView{
+//            VStack{
+//                List(scooters){ scooter in
+//                    NavigationLink{
+//                        ScooterDetailView(scooter: scooter).environment(\.managedObjectContext, dataController.container.viewContext)
+//                    }label: {
+//                        ScooterRowView(name: scooter.name!, uuid: scooter.uuid!, distance: "10", battery_level: scooter.battery_level).environment(\.managedObjectContext, dataController.container.viewContext)
+//                    }
+//                }
+//            }
+//        }.navigationTitle("Scooters")
         
         return NavigationView{
             VStack{
-                List(scooters_data){ scooter in
-                    NavigationLink{
-                        ScooterDetailView(selectedScooter: Scooter(id: scooter.id!, uuid: scooter.uuid!, name: scooter.name!, longitude: scooter.longitude, latitude: scooter.latitude, battery_level: scooter.battery_level, km_use: scooter.km_use, date_last_maintenance: scooter.date_last_maintenance!, state: scooter.state!, on_rent: scooter.on_rent)).environment(\.managedObjectContext, dataController.container.viewContext)
-                    }label: {
-                        ScooterRowView(name: scooter.name!, uuid: scooter.uuid!, distance: "10", battery_level: scooter.battery_level).environment(\.managedObjectContext, dataController.container.viewContext)
+                List(scooters){ scooter in
+                    if(scooter.state == "ACTIVE"){
+                        NavigationLink(destination: ScooterDetailView(scooter: scooter)){
+                            ScooterRowView(
+                                name: scooter.name!, uuid: scooter.state!, distance: "10", battery_level: scooter.battery_level)
+                        }
+                    }else{
+                        ScooterRowView(name: scooter.name!, uuid: scooter.state!, distance: "10", battery_level: scooter.battery_level)
+                    }
+                        
                     }
                 }
-            }
-        }
-        
-        
+            }.navigationTitle("Scooters")
 
-//        return NavigationView{
-//            VStack{
-//                List{
-//                    ForEach(scooters.scooters){ scooter in
-//                        NavigationLink(destination: ScooterDetailView(selectedScooter: scooter)){
-//                            ScooterRowView(
-//                                name: scooter.name, uuid: scooter.state, distance: "10", battery_level: scooter.battery_level)
-//                        }
-//                    }
-//                }
-//            }.navigationTitle("Scooters")
-//
-//
-//        }.onAppear{
-//            if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
-//                do{
-//                    let jsonData = try Data(contentsOf: url)
-//                    print(jsonData)
-//                    let decoder = JSONDecoder()
-//                    print(try decoder.decode(Scooters.self, from: jsonData))
-//                    scooters = try decoder.decode(Scooters.self, from: jsonData)
-//                }catch{
-//                    print(error)
-//                }
-//            }
-//        }
+
+        }
     }
-}
+
 
 struct ScooterListView_Previews: PreviewProvider {
     static var previews: some View {
@@ -72,9 +62,9 @@ struct ScooterRowView: View {
     let uuid: String
     let distance: String
     let battery_level: Float
-    @StateObject var dataController = DataController()
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest (sortDescriptors:[]) var scooters_data: FetchedResults<ScooterDB>
+    @StateObject var dataController = DataController()
+
     
     var body: some View{
         VStack{
@@ -113,7 +103,7 @@ struct ScooterRowView: View {
                             //Tendremos que realizar otro formattedFloat para poder poner por pantalla la vista del Float
                             //Como en el caso de la bateria por si lo queremos imprimir
                         }
-                    }.frame(width: 290, alignment: .trailing).environment(\.managedObjectContext, dataController.container.viewContext)
+                    }.frame(width: 290, alignment: .trailing)
                 }
             }
         }
