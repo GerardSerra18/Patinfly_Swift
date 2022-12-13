@@ -38,16 +38,18 @@ struct ScooterListView: View {
                                 name: scooter.name!, uuid: scooter.state!, distance: "10", battery_level: scooter.battery_level)
                         }
                     }else{
-                        ScooterRowView(name: scooter.name!, uuid: scooter.state!, distance: "10", battery_level: scooter.battery_level)
+                        NavigationLink(destination: ScooterDetailView(scooter: scooter)){
+                            ScooterRowView(
+                                name: scooter.name!, uuid: scooter.state!, distance: "10", battery_level: scooter.battery_level)
+                        }
                     }
                         
-                    }
                 }
-            }.navigationTitle("Scooters")
-
-
+                .navigationTitle("Scooters")
+            }
         }
     }
+}
 
 
 struct ScooterListView_Previews: PreviewProvider {

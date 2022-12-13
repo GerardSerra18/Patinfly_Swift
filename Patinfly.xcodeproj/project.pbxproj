@@ -153,13 +153,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		D5C4F42828ECAAD000055892 /* data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
 		D5DE62DC28D0F88200F8368D = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +180,6 @@
 				D544610B29367E12009C7571 /* CoreData */,
 				D565E46829228F5C00CCD840 /* Map */,
 				D5F94A0B29000042007F9FA5 /* ScootersViews */,
-				D5C4F42828ECAAD000055892 /* data */,
 				D51161AD28E36A570057AE80 /* Models */,
 				D51161AA28E3676C0057AE80 /* Services */,
 				D52203CB28DA31C800482BC5 /* Login */,
