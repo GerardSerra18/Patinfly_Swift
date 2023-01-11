@@ -67,7 +67,7 @@ struct ActiveRentView: View {
                     }.padding()
                     
                     VStack{
-                        NavigationLink(destination: ScooterListView().environment(\.managedObjectContext, dataController.container.viewContext).navigationBarBackButtonHidden(true)){
+                        NavigationLink(destination: ScooterListView().navigationBarBackButtonHidden(true)){
                             HStack{
                                 Image(systemName: "stop.circle.fill").foregroundColor(.white)
                                 Text("STOP").font(.headline).foregroundColor(.white)

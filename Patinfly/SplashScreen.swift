@@ -48,6 +48,7 @@ struct SplashScreen: View{
                     }
                     if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
                         do{
+                            // Modificacion para en esta práctica guardar los objetos del json en la base de datos
                             let dataController = DataController()
                             let jsonData = try Data(contentsOf: url)
                             print(jsonData)

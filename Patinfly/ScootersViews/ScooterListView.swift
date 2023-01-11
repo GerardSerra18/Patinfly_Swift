@@ -9,25 +9,14 @@ import SwiftUI
 
 struct ScooterListView: View {
     
-    //@State var scooters: Scooters = Scooters(scooters: []) //Lo hacia servir solo para cuando lo añadiamos directamente del json
+    //@State var scooters: Scooters = Scooters(scooters: []) //solo para cuando lo añadiamos directamente del json
     
     @StateObject var dataController = DataController()
     @Environment(\.managedObjectContext) var moc
     @FetchRequest (sortDescriptors:[]) var scooters: FetchedResults<ScooterDB>
+    @StateObject var rented = ActiveRent()
 
     var body: some View {
-    
-//        return NavigationView{
-//            VStack{
-//                List(scooters){ scooter in
-//                    NavigationLink{
-//                        ScooterDetailView(scooter: scooter).environment(\.managedObjectContext, dataController.container.viewContext)
-//                    }label: {
-//                        ScooterRowView(name: scooter.name!, uuid: scooter.uuid!, distance: "10", battery_level: scooter.battery_level).environment(\.managedObjectContext, dataController.container.viewContext)
-//                    }
-//                }
-//            }
-//        }.navigationTitle("Scooters")
         
         return NavigationView{
             VStack{
