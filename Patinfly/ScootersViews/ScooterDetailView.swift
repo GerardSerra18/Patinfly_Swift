@@ -44,7 +44,6 @@ struct ScooterDetailView: View {
         
         VStack{
             Map(coordinateRegion: $region, showsUserLocation: true,  annotationItems: places){ place in
-                // MapPin(coordinate: place.coordinate)
                 MapMarker(coordinate: place.coordinate)
             }.ignoresSafeArea()
             CircleImage()
@@ -87,10 +86,6 @@ struct ScooterDetailView: View {
                             .shadow(radius: 10)
                             .alert("Perfect, you just rented the scooter: " + uuid, isPresented: $showingAlert){
                                 Button("OK", role: .cancel){}
-                            }.onAppear(){
-//                                startRent(uuid: scooter.uuid)
-                            }.onDisappear(){
-                                print("FUNCIONA")
                             }
                         Spacer()
                         Button(uuid.isEmpty ? "NOTHING RENTED" : "STOP RENT"){
@@ -124,6 +119,7 @@ struct ScooterDetailView: View {
             }
         }
     }
+    
     func timeString(time: Int) -> String {
         let hours   = Int(time) / 3600
         let minutes = Int(time) / 60 % 60
@@ -131,27 +127,6 @@ struct ScooterDetailView: View {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    //Func para poder alquilar y parar el alquiler de los patinetes, controlarlos a traves de la database
-    
-//    func startRent(uuid: String!){
-//        let data = DataController()
-//        data.saveRent(uuid: uuid)
-//    }
-    
-    func stopRent(uuid: String!) {
-        let container = NSPersistentContainer(name: "RentDB")
-        let context = container.viewContext
-        let query = NSFetchRequest<NSFetchRequestResult>(entityName: "RentDB")
-        do{
-            let result = try context.fetch(query)
-            for data in result as! [NSManagedObject]{
-                context.delete(data.value(forKey: "uuid") as! NSManagedObject)
-            }
-        }
-        catch{
-            print("error")
-        }
-    }
 }
 
 class ActiveRent: ObservableObject {

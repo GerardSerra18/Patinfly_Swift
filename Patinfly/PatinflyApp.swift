@@ -20,23 +20,6 @@ struct PatinflyApp: App {
     var body: some Scene {
         WindowGroup{
             
-//            if authentication.isValidated{
-////                let defaults = UserDefaults.standard
-//                if(true){
-//                    ScooterDetailView(scooter: dataController.searchScooter()!).environment(\.managedObjectContext, dataController.container.viewContext)
-//                }
-//                else{
-//                    ScooterListView().environmentObject(authentication).environment(\.managedObjectContext, dataController.container.viewContext)
-//                }
-//            }
-//            else{
-//                if(uuid == "HOLA"){
-//                    SplashScreen().environmentObject(authentication).environment(\.managedObjectContext, dataController.container.viewContext)
-//                }
-//                else{
-//                    ScooterDetailView(scooter: dataController.searchScooter()!).environment(\.managedObjectContext, dataController.container.viewContext)
-//                }
-//            }
             
             if authentication.isValidated{
             

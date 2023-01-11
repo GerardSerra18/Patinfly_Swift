@@ -13,7 +13,6 @@ import SwiftUI
 
 class DataController: ObservableObject{
     let container = NSPersistentContainer(name:"ScooterDatabase")
-//    var uuid: String = UserDefaults.standard.string(forKey: "uuid")!
     @Environment(\.managedObjectContext) var moc
     
     init(){
@@ -24,27 +23,6 @@ class DataController: ObservableObject{
             }
         }
     }
-    
-    /*func searchScooter()-> ScooterDB?{
-        print(uuid)
-        @FetchRequest (sortDescriptors:[]) var scooters: FetchedResults<ScooterDB>
-        
-        print(moc)
-        if (container == nil){
-            
-            return nil
-            
-        }
-        let context = container.viewContext
-        let request = NSFetchRequest<ScooterDB>(entityName: "ScooterDB")
-        let stringValue = uuid as CVarArg
-        
-//        request.predicate = NSPredicate(format: "uuid == %@", stringValue)
-        
-            let resultado = try? context.fetch(request)
-            print(resultado)
-            return resultado!.first
-    }*/
     
     func save(scooter: Scooter){
         let ScooterToSave: ScooterDB = ScooterDB(context: container.viewContext)
@@ -60,11 +38,5 @@ class DataController: ObservableObject{
         ScooterToSave.on_rent = scooter.on_rent
         try? container.viewContext.save()
     }
-    /*
-    func saveRent(uuid: String){
-        let rentData: RentDB = RentDB(context: container.viewContext)
-        rentData.uuid=uuid
-        try? container.viewContext.save()
-    }*/
     
 }
