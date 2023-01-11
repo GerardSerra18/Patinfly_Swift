@@ -46,7 +46,7 @@ struct SplashScreen: View{
                     withAnimation{
                         self.isActive = true
                     }
-                    if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
+                    /*if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
                         do{
                             // Modificacion para en esta práctica guardar los objetos del json en la base de datos
                             let dataController = DataController()
@@ -58,8 +58,20 @@ struct SplashScreen: View{
                             for scooter in scooters.scooters{
                                 dataController.save(scooter: scooter)
                             }
-                        }catch{
-                            print(error)
+                        }*/
+                    APIService.checkServerStatusWithCompletion(){(result: Result<ServerStatus, NetworkError>) in
+                        if ((try? result.get().status) != nil){
+                            APIService.scooterList(withToken: APIAccess.token)
+                            APIService.scooterListWithCompletion(withToken: APIAccess.token)
+                            {(result: Result<Scooters, NetworkError>) in do {
+                                let dataController = DataController()
+                                for scooter in try result.get().scooters{
+                                        dataController.save(scooter: scooter)
+                                }
+                                }catch let parseError{
+                                print("JSON Error \(parseError.localizedDescription)")
+                                }
+                            }
                         }
                     }
                 }
