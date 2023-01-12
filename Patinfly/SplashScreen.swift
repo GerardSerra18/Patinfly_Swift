@@ -46,6 +46,7 @@ struct SplashScreen: View{
                     withAnimation{
                         self.isActive = true
                     }
+                    //Codigo utilizado en P2 para guardar los datos en la base de datos
                     /*if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
                         do{
                             // Modificacion para en esta práctica guardar los objetos del json en la base de datos
@@ -59,17 +60,19 @@ struct SplashScreen: View{
                                 dataController.save(scooter: scooter)
                             }
                         }*/
+                    
+                    //Codigo P3, utilizando servidor del patinfly
                     APIService.checkServerStatusWithCompletion(){(result: Result<ServerStatus, NetworkError>) in
                         if ((try? result.get().status) != nil){
                             APIService.scooterList(withToken: APIAccess.token)
-                            APIService.scooterListWithCompletion(withToken: APIAccess.token)
-                            {(result: Result<Scooters, NetworkError>) in do {
-                                let dataController = DataController()
-                                for scooter in try result.get().scooters{
+                            APIService.scooterListWithCompletion(withToken: APIAccess.token){(result: Result<Scooters, NetworkError>) in
+                                do {
+                                    let dataController = DataController()
+                                    for scooter in try result.get().scooters{
                                         dataController.save(scooter: scooter)
-                                }
+                                    }
                                 }catch let parseError{
-                                print("JSON Error \(parseError.localizedDescription)")
+                                    print("JSON Error \(parseError.localizedDescription)")
                                 }
                             }
                         }

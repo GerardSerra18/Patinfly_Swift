@@ -54,7 +54,18 @@ struct ScooterDetailView: View {
             
             VStack(alignment: .leading){
                 HStack{
-                    Text(scooter.name!).foregroundColor(.black).padding()
+                    VStack{
+                        Text(scooter.name!).foregroundColor(.black).padding()
+                        if(uuid.isEmpty){
+                            Text("TIME: \(timeString(time: StartTime))")
+                        }
+                        else{
+                            Text("TIME: \(timeString(time: StartTime))")
+                                .onReceive(timer){ _ in
+                                    StartTime += 1
+                            }
+                        }
+                    }
                     Spacer()
                     if (scooter.battery_level == 100 ){
                         Image(systemName: "battery.100").font(.system(size: 25.0)).foregroundColor(.green)
@@ -107,8 +118,7 @@ struct ScooterDetailView: View {
                     .padding(.horizontal, 20)
                     .padding(.leading)
                     .shadow(radius: 10)
-                    
-                
+                                    
             }.onAppear(){
                 LocationManager.shared.getUserLocation{ location in
                     DispatchQueue.main.async{
@@ -126,6 +136,31 @@ struct ScooterDetailView: View {
         let seconds = Int(time) % 60
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
+    
+    
+    func startScooterRent(uuid:String!)
+    {
+        APIService.startRent(withToken: APIAccess.token, uuid: uuid){(result:Result<ServerRent, NetworkError>) in
+            let context = dataController.container.viewContext
+            let query = NSFetchRequest<RentDB>(entityName: "RentDB")
+            let resultado = try? context.fetch(query)
+            do {
+                dataController.Rent(uuid: uuid)
+            }
+        }
+    }
+    
+    func stopScooterRent(uuid: String!){
+        let context = dataController.container.viewContext
+        let query = NSFetchRequest<RentDB>(entityName: "RentDB")
+        let result = try? context.fetch(query)
+        APIService.stopRent(withToken: APIAccess.token, uuid: uuid){
+            (result:Result<ServerRent, NetworkError>) in
+        }
+        
+        
+    }
+    
     
 }
 

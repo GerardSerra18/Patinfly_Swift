@@ -11,9 +11,9 @@ struct Scooters: Hashable, Codable {
     var scooters: [Scooter]
 }
 
-struct Scooter: Hashable, Codable, Equatable, Identifiable {
+struct Scooter: Hashable, Codable, Equatable {
     
-    var id: String
+//    var id: String
     var uuid: String
     var name: String
     var longitude: Float

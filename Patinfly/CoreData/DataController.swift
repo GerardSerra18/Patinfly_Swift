@@ -27,7 +27,7 @@ class DataController: ObservableObject{
     func save(scooter: Scooter){
         let ScooterToSave: ScooterDB = ScooterDB(context: container.viewContext)
         
-        ScooterToSave.id = scooter.id
+//        ScooterToSave.id = scooter.id
         ScooterToSave.name = scooter.name
         ScooterToSave.uuid = scooter.uuid
         ScooterToSave.longitude = scooter.longitude
@@ -36,6 +36,13 @@ class DataController: ObservableObject{
         ScooterToSave.date_last_maintenance = scooter.date_last_maintenance
         ScooterToSave.state = scooter.state
         ScooterToSave.on_rent = scooter.on_rent
+        try? container.viewContext.save()
+    }
+    
+    //Function to save the rent of the scooter
+    func Rent(uuid: String){
+        let scooterRented: RentDB = RentDB(context: container.viewContext)
+        scooterRented.uuid=uuid
         try? container.viewContext.save()
     }
     

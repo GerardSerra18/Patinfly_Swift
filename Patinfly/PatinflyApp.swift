@@ -14,7 +14,7 @@ struct PatinflyApp: App {
     @Environment(\.managedObjectContext) var moc
     @StateObject var authentication = Authentication()
     @StateObject var dataController = DataController()
-    var uuid = UserDefaults.standard.string(forKey: "uuid")
+//    var uuid = UserDefaults.standard.string(forKey: "uuid")
 
         
     var body: some Scene {

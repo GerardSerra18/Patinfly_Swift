@@ -54,7 +54,7 @@ class APIService{
             do {
                 print(data)
                 let jsonData = try JSONDecoder().decode(ServerStatus.self, from: data)
-                //scooterList(withToken: APIConstants.token)
+                scooterList(withToken: APIAccess.token)
                 print(jsonData)
 
             }catch let errorParser{
@@ -94,6 +94,7 @@ class APIService{
         var request = URLRequest(url: (callURL.url)!)
         request.httpMethod = "GET"
         request.setValue(withToken, forHTTPHeaderField: "api-key")
+        
         let task = URLSession.shared.dataTask(with:request){
             (data, response, error) in
             guard let data = data else{
@@ -107,11 +108,10 @@ class APIService{
             }
             
             do {
-                
-                let scooters: Scooters = try JSONDecoder().decode(Scooters.self, from: data)
-                //let jsonData = try JSONDecoder().decode(Scooters.self, from: data)
-                
-                print(scooters)
+                print(data)
+                let jsonData = try JSONDecoder().decode(Scooters.self, from: data)
+            
+                print(jsonData)
                 // Do stuff here
             }catch let errorParser{
                 print("The data from server status is compliance with the specifications or server is not working")
@@ -140,6 +140,64 @@ class APIService{
                 }
                 do {
                     let jsonData = try JSONDecoder().decode(Scooters.self, from: data!)
+                    completion(.success(jsonData))
+                } catch let errorParser{
+                    print("The data from server status is compliance with the specifications or server is not working")
+                    print(errorParser)
+                    completion(.failure(.decodingError(errorParser)))
+                }
+        }
+        task.resume()
+    }
+    
+    
+    
+    //Metodos start and stop rent
+    
+    static func startRent(withToken: String,uuid: String, completion: @escaping (Result<ServerRent, NetworkError>) -> Void){
+        let callURL = APIAccess.scootersStartRent()
+        
+        var request = URLRequest(url: (callURL.url)!)
+        request.httpMethod = "GET"
+        
+        request.setValue(withToken, forHTTPHeaderField: "api-key")
+        
+        let task = URLSession.shared.dataTask(with:request){
+            data, response, error in
+                        
+                if let networkError = NetworkError(data: data, response: response, error: error) {
+                            print("APIService: error accessing server status")
+                            completion(.failure(networkError))
+                }
+                do {
+                    let jsonData = try JSONDecoder().decode(ServerRent.self, from: data!)
+                    completion(.success(jsonData))
+                } catch let errorParser{
+                    print("The data from server status is compliance with the specifications or server is not working")
+                    print(errorParser)
+                    completion(.failure(.decodingError(errorParser)))
+                }
+        }
+        task.resume()
+    }
+    
+    static func stopRent(withToken: String,uuid: String, completion: @escaping (Result<ServerRent, NetworkError>) -> Void){
+        let callURL = APIAccess.scootersStopRent()
+        
+        var request = URLRequest(url: (callURL.url)!)
+        request.httpMethod = "GET"
+        
+        request.setValue(withToken, forHTTPHeaderField: "api-key")
+        
+        let task = URLSession.shared.dataTask(with:request){
+            data, response, error in
+                        
+                if let networkError = NetworkError(data: data, response: response, error: error) {
+                            print("APIService: error accessing server status")
+                            completion(.failure(networkError))
+                }
+                do {
+                    let jsonData = try JSONDecoder().decode(ServerRent.self, from: data!)
                     completion(.success(jsonData))
                 } catch let errorParser{
                     print("The data from server status is compliance with the specifications or server is not working")

@@ -15,8 +15,8 @@ struct APIAccess {
     static let urlServer: String = "https://patinfly.com/"
     static let pathStatus: String = "/endpoints/status/"
     static let pathScooter: String = "/endpoints/scooter/"
-    static let pathScooterStart: String = "/endpoints/rent/start"
-    static let pathScooterStop: String = "/endpoints/rent/stop"
+    static let pathScooterStart: String = "/endpoints/rent/start/ea147af2-d480-11ec-91c7-ecf4bbcc40f8"
+    static let pathScooterStop: String = "/endpoints/rent/stop/ea147af2-d480-11ec-91c7-ecf4bbcc40f8"
     
     static func scooters() -> URLComponents{
         var urlServerScooters: URLComponents = APIAccess.baseURL()
@@ -36,5 +36,19 @@ struct APIAccess {
         baseServerURL.host = APIAccess.host
         return baseServerURL
     }
+    
+    static func scootersStartRent() -> URLComponents{
+        var urlServerScooters: URLComponents = APIAccess.baseURL()
+        urlServerScooters.path = APIAccess.pathScooterStart
+        return urlServerScooters
+    }
+    
+    static func scootersStopRent() -> URLComponents{
+        var urlServerScooters: URLComponents = APIAccess.baseURL()
+        urlServerScooters.path = APIAccess.pathScooterStop
+        return urlServerScooters
+    }
+    
+
    
 }
