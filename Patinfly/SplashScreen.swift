@@ -10,8 +10,8 @@ import SwiftUI
 struct SplashScreen: View{
     
     @StateObject var authentication = Authentication()
-//    @Environment(\.managedObjectContext) var moc
-//    @StateObject var dataController = DataController()
+    //    @Environment(\.managedObjectContext) var moc
+    //    @StateObject var dataController = DataController()
     
     @State private var isActive = false
     @State private var size = 0.8
@@ -48,29 +48,40 @@ struct SplashScreen: View{
                     }
                     //Codigo utilizado en P2 para guardar los datos en la base de datos
                     /*if let url = Bundle.main.url(forResource: "scooters", withExtension: "json"){
-                        do{
-                            // Modificacion para en esta práctica guardar los objetos del json en la base de datos
-                            let dataController = DataController()
-                            let jsonData = try Data(contentsOf: url)
-                            print(jsonData)
-                            let decoder = JSONDecoder()
-                            print(try decoder.decode(Scooters.self, from: jsonData))
-                            let scooters: Scooters = try decoder.decode(Scooters.self, from: jsonData)
-                            for scooter in scooters.scooters{
-                                dataController.save(scooter: scooter)
-                            }
-                        }*/
+                     do{
+                     // Modificacion para en esta práctica guardar los objetos del json en la base de datos
+                     let dataController = DataController()
+                     let jsonData = try Data(contentsOf: url)
+                     print(jsonData)
+                     let decoder = JSONDecoder()
+                     print(try decoder.decode(Scooters.self, from: jsonData))
+                     let scooters: Scooters = try decoder.decode(Scooters.self, from: jsonData)
+                     for scooter in scooters.scooters{
+                     dataController.save(scooter: scooter)
+                     }
+                     }*/
                     
-                    //Codigo P3, utilizando servidor del patinfly
+                    //Codigo P3, utilizando servidor del patinfl
+                    //Comprobacion del servidor, lo imprimo porque quiero ver que no existe ningun tipo de problema
+                    APIService.checkServerStatusWithCompletion(){
+                        result in
+                        print (result)
+                    }
+                    APIService.scooterListWithCompletion(withToken: APIAccess.token){
+                        result in
+                        print (result)
+                    }
+                    //Si la comprobacion del servidor ha ido bien sin ningun error guardar todos los patinetes en la db
                     APIService.checkServerStatusWithCompletion(){(result: Result<ServerStatus, NetworkError>) in
                         if ((try? result.get().status) != nil){
                             APIService.scooterList(withToken: APIAccess.token)
                             APIService.scooterListWithCompletion(withToken: APIAccess.token){(result: Result<Scooters, NetworkError>) in
-                                do {
+                                do{
                                     let dataController = DataController()
                                     for scooter in try result.get().scooters{
                                         dataController.save(scooter: scooter)
                                     }
+//                                    print("TOT GUARDAT CORRECTAMENT")
                                 }catch let parseError{
                                     print("JSON Error \(parseError.localizedDescription)")
                                 }
@@ -89,7 +100,4 @@ struct SplashScreen: View{
             SplashScreen().previewInterfaceOrientation(.landscapeLeft)
         }
     }
-    
-    
-    
 }

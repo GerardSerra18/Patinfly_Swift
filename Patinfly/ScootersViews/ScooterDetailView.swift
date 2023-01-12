@@ -30,11 +30,12 @@ struct ScooterDetailView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @AppStorage("uuid") var uuid: String = ""
 
-//    @State private var start = false
-//    @State private var stop = true
     @State var StartTime = 00*00*00
     @State private var showingAlert = false
     @State private var showingAlert2 = false
+    let dateFormatter = DateFormatter()
+    @State  var startTime = "00:00:00"
+    @State var finishTime = "00:00:00"
     
     var body: some View{
         
@@ -57,7 +58,7 @@ struct ScooterDetailView: View {
                     VStack{
                         Text(scooter.name!).foregroundColor(.black).padding()
                         if(uuid.isEmpty){
-                            Text("TIME: \(timeString(time: StartTime))")
+                            Text("TIME: \(timeString(time: StartTime*0))")
                         }
                         else{
                             Text("TIME: \(timeString(time: StartTime))")
@@ -88,6 +89,7 @@ struct ScooterDetailView: View {
                             
                             uuid = scooter.name!
                             showingAlert = true
+                            startRent(uuid: scooter.uuid)
                             
                         }.padding()
                             .background(.blue)
@@ -103,6 +105,7 @@ struct ScooterDetailView: View {
                             
                             uuid = ""
                             showingAlert2 = true
+                            stopRent(uuid: scooter.uuid)
                             
                         }.padding()
                         .background(.red)
@@ -137,23 +140,39 @@ struct ScooterDetailView: View {
         return String(format:"%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    
-    func startScooterRent(uuid:String!)
-    {
-        APIService.startRent(withToken: APIAccess.token, uuid: uuid){(result:Result<ServerRent, NetworkError>) in
-            let context = dataController.container.viewContext
-            let query = NSFetchRequest<RentDB>(entityName: "RentDB")
-            let resultado = try? context.fetch(query)
-            do {
-                dataController.Rent(uuid: uuid)
-            }
+    func startRent(uuid: String!){
+        APIService.startRent(withToken: APIAccess.token, uuid: uuid){
+            result in
+            print (result)
         }
     }
     
+    func stopRent(uuid: String!){
+        APIService.stopRent(withToken: APIAccess.token, uuid: uuid){
+            result in
+            print (result)
+        }
+    }
+    
+    
+//    func startScooterRent(uuid:String!)
+//    {
+//        APIService.startRent(withToken: APIAccess.token, uuid: uuid){(result:Result<ServerRent, NetworkError>) in
+//            let context = dataController.container.viewContext
+//            let query = NSFetchRequest<ScooterDB>(entityName: "RentDB")
+//            _ = try? context.fetch(query)
+//            do {
+//                dataController.Rent(uuid: uuid)
+//            }
+//
+//        }
+//    }
+    
+    
     func stopScooterRent(uuid: String!){
         let context = dataController.container.viewContext
-        let query = NSFetchRequest<RentDB>(entityName: "RentDB")
-        let result = try? context.fetch(query)
+        let query = NSFetchRequest<ScooterDB>(entityName: "RentDB")
+        _ = try? context.fetch(query)
         APIService.stopRent(withToken: APIAccess.token, uuid: uuid){
             (result:Result<ServerRent, NetworkError>) in
         }
@@ -161,9 +180,20 @@ struct ScooterDetailView: View {
         
     }
     
-    
-}
+    /*func updateStartDate(uuid:String!){
+        let context = dataController.container.viewContext
+        let query = NSFetchRequest<RentDB>(entityName: "RentDB")
+        let resultado = try? context.fetch(query)
+        dateFormatter.timeStyle = .medium
+        if finishTime != "00:00:00"{
+            finishTime = "00:00:00"
+        }
+        for rent in resultado ?? []{
+            if rent.uuid == uuid{
+                startTime =  rent.date_start ?? "00:00:00"
+            }
+        }
+    }*/
 
-class ActiveRent: ObservableObject {
-    @Published var isRented = false
+    
 }

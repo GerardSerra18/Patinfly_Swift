@@ -14,7 +14,6 @@ struct ScooterListView: View {
     @StateObject var dataController = DataController()
     @Environment(\.managedObjectContext) var moc
     @FetchRequest (sortDescriptors:[]) var scooters: FetchedResults<ScooterDB>
-    @StateObject var rented = ActiveRent()
 
     var body: some View {
         

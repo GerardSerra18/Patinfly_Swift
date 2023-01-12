@@ -30,7 +30,7 @@ class DataController: ObservableObject{
 //        ScooterToSave.id = scooter.id
         ScooterToSave.name = scooter.name
         ScooterToSave.uuid = scooter.uuid
-        ScooterToSave.longitude = scooter.longitude
+        ScooterToSave.longitude = Float(scooter.longitude)
         ScooterToSave.latitude = scooter.latitude
         ScooterToSave.battery_level = scooter.battery_level
         ScooterToSave.date_last_maintenance = scooter.date_last_maintenance
