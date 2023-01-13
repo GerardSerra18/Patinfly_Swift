@@ -153,47 +153,5 @@ struct ScooterDetailView: View {
             print (result)
         }
     }
-    
-    
-//    func startScooterRent(uuid:String!)
-//    {
-//        APIService.startRent(withToken: APIAccess.token, uuid: uuid){(result:Result<ServerRent, NetworkError>) in
-//            let context = dataController.container.viewContext
-//            let query = NSFetchRequest<ScooterDB>(entityName: "RentDB")
-//            _ = try? context.fetch(query)
-//            do {
-//                dataController.Rent(uuid: uuid)
-//            }
-//
-//        }
-//    }
-    
-    
-    func stopScooterRent(uuid: String!){
-        let context = dataController.container.viewContext
-        let query = NSFetchRequest<ScooterDB>(entityName: "RentDB")
-        _ = try? context.fetch(query)
-        APIService.stopRent(withToken: APIAccess.token, uuid: uuid){
-            (result:Result<ServerRent, NetworkError>) in
-        }
         
-        
-    }
-    
-    /*func updateStartDate(uuid:String!){
-        let context = dataController.container.viewContext
-        let query = NSFetchRequest<RentDB>(entityName: "RentDB")
-        let resultado = try? context.fetch(query)
-        dateFormatter.timeStyle = .medium
-        if finishTime != "00:00:00"{
-            finishTime = "00:00:00"
-        }
-        for rent in resultado ?? []{
-            if rent.uuid == uuid{
-                startTime =  rent.date_start ?? "00:00:00"
-            }
-        }
-    }*/
-
-    
 }

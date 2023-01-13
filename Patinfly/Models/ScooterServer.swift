@@ -18,7 +18,7 @@ struct  ScooterServer: Hashable, Codable, Equatable{
     var latitude: Float
     var battery_level: Float
     var km_use: Float
-    var date_last_maintenance: String
+    var date_last_maintenance: String?
     var state: String
     var on_rent: Bool
 }
