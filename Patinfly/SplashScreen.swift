@@ -67,6 +67,7 @@ struct SplashScreen: View{
                         result in
                         print (result)
                     }
+                    //Lo imprimo para poder comprobar que me coge la lista del json del servidor
                     APIService.scooterListWithCompletion(withToken: APIAccess.token){
                         result in
                         print (result)
